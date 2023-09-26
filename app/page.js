@@ -102,7 +102,7 @@ const Home = () => {
       <header className="bg-white px-9 md:px-32 text-black">
         <nav className="flex justify-between items-center w-full">
           <div>
-            <Image src={logo} width={83} height={84} />
+            <Image alt="icon" src={logo} width={83} height={84} />
           </div>
           <div className={`${nav ? "block" : "hidden"}`}>
             <ul className="flex flex-col md:flex-row gap-8 absolute md:static bg-white mt-9 md:mt-0 z-10 w-full right-0 left-0 px-9 py-10 md:py-0 md:px-0">
@@ -277,28 +277,28 @@ const Home = () => {
             className="mySwiper mt-6"
           >
             <SwiperSlide>
-              <Image src={partner1} className="mx-auto py-3" />
+              <Image alt="icon" src={partner1} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner2} className="mx-auto py-3" />
+              <Image alt="icon" src={partner2} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner3} className="mx-auto py-3" />
+              <Image alt="icon" src={partner3} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner4} className="mx-auto py-3" />
+              <Image alt="icon" src={partner4} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner5} className="mx-auto py-3" />
+              <Image alt="icon" src={partner5} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner6} className="mx-auto py-3" />
+              <Image alt="icon" src={partner6} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner7} className="mx-auto py-3" />
+              <Image alt="icon" src={partner7} className="mx-auto py-3" />
             </SwiperSlide>
             <SwiperSlide>
-              <Image src={partner8} className="mx-auto py-3" />
+              <Image alt="icon" src={partner8} className="mx-auto py-3" />
             </SwiperSlide>
           </Swiper>
         </section>
@@ -306,16 +306,16 @@ const Home = () => {
       <footer className="py-20 px-9 md:px-32 bg-[#057017] md:flex justify-between">
         <div>
           <div className="bg-white w-fit">
-            <Image src={logo} />
+            <Image alt="icon" src={logo} />
           </div>
           <div className="flex text-white items-center gap-2 mt-12">
-            <Image src={email} className="w-5" />
+            <Image alt="icon" src={email} className="w-5" />
             <p className="text-white text-base font-normal opacity-70">
               makeinnigeriaproject@gmail.com
             </p>
           </div>
           <div className="flex text-white items-center gap-2 my-3 mb-8">
-            <Image src={gps} className="w-5" />
+            <Image alt="icon" src={gps} className="w-5" />
             <p className="text-white text-base font-normal opacity-70">
               28b Flemming Avenue, Rumuomasi,
               <br /> Port Harcourt, Nigeria
@@ -325,37 +325,35 @@ const Home = () => {
             <div>
               <a href="#">
                 <div className="border w-fit rounded-full p-3">
-                  <Image src={twitter} className="w-5 h-5" />
+                  <Image alt="icon" src={twitter} className="w-5 h-5" />
                 </div>
               </a>
             </div>
             <div>
               <a href="#">
                 <div className="border w-fit rounded-full p-3">
-                  <Image src={facebook} className="w-5 h-5" />
+                  <Image alt="icon" src={facebook} className="w-5 h-5" />
                 </div>
               </a>
             </div>
             <div>
               <a href="#">
                 <div className="border w-fit rounded-full p-3">
-                  <Image src={instagram} className="w-5 h-5" />
+                  <Image alt="icon" src={instagram} className="w-5 h-5" />
                 </div>
               </a>
             </div>
             <div>
               <a href="#">
                 <div className="border w-fit rounded-full p-3">
-                  <Image src={linkedin} className="w-5 h-5" />
+                  <Image alt="icon" src={linkedin} className="w-5 h-5" />
                 </div>
               </a>
             </div>
           </div>
         </div>
         <div className="text-white">
-          <h3 className="text-white text-xl" className="text-white text-xl">
-            Resources
-          </h3>
+          <h3 className="text-white text-xl">Resources</h3>
           <div className="my-4">
             <a href="#" className="text-white text-base font-normal opacity-70">
               services

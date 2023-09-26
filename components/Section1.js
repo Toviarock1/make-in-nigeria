@@ -60,7 +60,7 @@ const Section1 = () => {
           transition={{ duration: 1.6 }}
           className="md:w-2/4 flex justify-center"
         >
-          <Image src={ceo} width={447} />
+          <Image src={ceo} width={447} alt="icon" />
         </motion.div>
         <div className="md:w-2/4">
           <motion.h2

@@ -71,7 +71,7 @@ const Card = ({ img1, title, paragraph }) => {
     >
       <div>
         <div className="bg-[#009C1A] w-fit p-6 rounded-full mx-auto opacity-95">
-          <Image src={img1} width={106} />
+          <Image alt="icon" src={img1} width={106} />
         </div>
       </div>
       <div className="pb-10">
@@ -84,7 +84,7 @@ const Card = ({ img1, title, paragraph }) => {
           </p>
         </div>
         <div className="flex justify-center pt-4">
-          <Image src={nextbtnIcon} alt="next button" />
+          <Image alt="icon" src={nextbtnIcon} />
         </div>
       </div>
     </motion.div>
