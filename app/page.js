@@ -104,7 +104,7 @@ const Home = () => {
           <div>
             <Image alt="icon" src={logo} width={83} height={84} />
           </div>
-          <div className={`${nav ? "block" : "hidden"}`}>
+          <div className={`${nav ? "block" : "hidden"} md:block`}>
             <ul className="flex flex-col md:flex-row gap-8 absolute md:static bg-white mt-9 md:mt-0 z-10 w-full right-0 left-0 px-9 py-10 md:py-0 md:px-0">
               <li>
                 <a href="#">Home</a>
