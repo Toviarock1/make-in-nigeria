@@ -1,113 +1,425 @@
-import Image from 'next/image'
+"use client";
+import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import logo from "@/public/logo.svg";
 
-export default function Home() {
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { motion, useAnimation } from "framer-motion";
+import { InView, useInView } from "react-intersection-observer";
+import { fadeIn } from "@/motion";
+import Card from "@/components/Card";
+import ceo from "@/public/ceo.svg";
+
+import speaker1 from "@/public/speaker1.svg";
+import speaker2 from "@/public/speaker2.svg";
+import speaker3 from "@/public/speaker3.svg";
+import speaker4 from "@/public/speaker4.svg";
+import speaker5 from "@/public/speaker5.svg";
+import partner1 from "@/public/partner1.svg";
+import partner2 from "@/public/partner2.svg";
+import partner3 from "@/public/partner3.svg";
+import partner4 from "@/public/partner4.svg";
+import partner5 from "@/public/partner5.svg";
+import partner6 from "@/public/partner6.svg";
+import partner7 from "@/public/partner7.svg";
+import partner8 from "@/public/partner8.svg";
+import email from "@/public/email.svg";
+import gps from "@/public/gps2.svg";
+import twitter from "@/public/twitter2.svg";
+import facebook from "@/public/facebook2.svg";
+import linkedin from "@/public/linkedin.svg";
+import instagram from "@/public/instagram.svg";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import SpeakerCard from "@/components/SpeakerCard";
+import Section1 from "@/components/Section1";
+import Section2 from "@/components/Section2";
+
+const Home = () => {
+  const [swiperRef, setSwiperRef] = useState(null);
+  const [nav, setNav] = useState(false);
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  const heroVariant = {
+    visible: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+    },
+    hidden: {
+      scale: 0,
+      opacity: 0,
+      y: 100,
+    },
+  };
+
+  const welcomeImgVariant = {
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+    hidden: {
+      x: -50,
+      opacity: 0,
+    },
+  };
+
+  const aboutTextVariant = {
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+    hidden: {
+      x: -50,
+      opacity: 0,
+    },
+  };
+
+  const welcomeTextVariant = {
+    visible: {
+      y: 0,
+      x: 0,
+      opacity: 1,
+    },
+    hidden: {
+      y: 4,
+      x: 100,
+      opacity: 0,
+    },
+  };
+
+  useEffect(() => {
+    if (inView) {
+      control.start("visible");
+    }
+  }, [control, inView]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <header className="bg-white px-9 md:px-32 text-black">
+        <nav className="flex justify-between items-center w-full">
+          <div>
+            <Image src={logo} width={83} height={84} />
+          </div>
+          <div className={`${nav ? "block" : "hidden"}`}>
+            <ul className="flex flex-col md:flex-row gap-8 absolute md:static bg-white mt-9 md:mt-0 z-10 w-full right-0 left-0 px-9 py-10 md:py-0 md:px-0">
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="#">Our Institute</a>
+              </li>
+              <li>
+                <a href="#">Our Gallery</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <button className="px-4 bg-[#057017] hidden md:block text-white py-2 rounded">
+              Register
+            </button>
+            <button
+              className="px-4 bg-[#057017] md:hidden text-white py-2 rounded"
+              onClick={() => setNav(!nav)}
+            >
+              Menu
+            </button>
+          </div>
+        </nav>
+      </header>
+      <main className="bg-white text-black">
+        <div className="h-[400px]">
+          <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper h-[90vh]"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <SwiperSlide>
+              <a href="#">
+                <div className="bg-1"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-2"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-3"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-4"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-5"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-6"></div>
+              </a>
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <a href="#">
+                <div className="bg-7"></div>
+              </a>
+            </SwiperSlide>
+          </Swiper>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+        <Section1 />
+        <Section2 />
+        <section className="my-20 px-0 md:px-32">
+          <h3 className="text-center text-[#057017] text-4xl font-semibold">
+            Meet some of our speakers
+          </h3>
+          <Swiper
+            onSwiper={setSwiperRef}
+            slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={30}
+            // pagination={{
+            //   type: "fraction",
+            // }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="mySwiper mt-6"
+          >
+            <SwiperSlide>
+              <SpeakerCard
+                img={speaker1}
+                title={"  Bishop (Dr) Feb Idahosa"}
+                text={" President, Benson Idahosa University"}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <SpeakerCard
+                img={speaker2}
+                title={"Frank Donga"}
+                text={"Comedian, Entreprenuer"}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <SpeakerCard
+                img={speaker3}
+                title={"Dr Emeka Unachukwu"}
+                text={"Founder, Develop U"}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <SpeakerCard
+                img={speaker4}
+                title={"Dr Emeka Unachukwu"}
+                text={"Founder, Develop U"}
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              {" "}
+              <SpeakerCard
+                img={speaker5}
+                title={"Dr Emeka Unachukwu"}
+                text={"Founder, Develop U"}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </section>
+        <section className="my-20 px-0 md:px-32">
+          <h3 className="text-center text-[#057017] text-4xl font-semibold">
+            Meet our partners
+          </h3>
+          <p className="my-5 text-center px-9 md:px-0 md:mx-64">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            scelerisque tellus interdum venenatis auctor et nibh. Rhoncus a, sed
+            lobortis nisi.
           </p>
-        </a>
+          <Swiper
+            onSwiper={setSwiperRef}
+            slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="mySwiper mt-6"
+          >
+            <SwiperSlide>
+              <Image src={partner1} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner2} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner3} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner4} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner5} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner6} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner7} className="mx-auto py-3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image src={partner8} className="mx-auto py-3" />
+            </SwiperSlide>
+          </Swiper>
+        </section>
+      </main>
+      <footer className="py-20 px-9 md:px-32 bg-[#057017] md:flex justify-between">
+        <div>
+          <div className="bg-white w-fit">
+            <Image src={logo} />
+          </div>
+          <div className="flex text-white items-center gap-2 mt-12">
+            <Image src={email} className="w-5" />
+            <p className="text-white text-base font-normal opacity-70">
+              makeinnigeriaproject@gmail.com
+            </p>
+          </div>
+          <div className="flex text-white items-center gap-2 my-3 mb-8">
+            <Image src={gps} className="w-5" />
+            <p className="text-white text-base font-normal opacity-70">
+              28b Flemming Avenue, Rumuomasi,
+              <br /> Port Harcourt, Nigeria
+            </p>
+          </div>
+          <div className="flex gap-8">
+            <div>
+              <a href="#">
+                <div className="border w-fit rounded-full p-3">
+                  <Image src={twitter} className="w-5 h-5" />
+                </div>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                <div className="border w-fit rounded-full p-3">
+                  <Image src={facebook} className="w-5 h-5" />
+                </div>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                <div className="border w-fit rounded-full p-3">
+                  <Image src={instagram} className="w-5 h-5" />
+                </div>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                <div className="border w-fit rounded-full p-3">
+                  <Image src={linkedin} className="w-5 h-5" />
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="text-white">
+          <h3 className="text-white text-xl" className="text-white text-xl">
+            Resources
+          </h3>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              services
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Our Institute
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Our Gallery
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Blog
+            </a>
+          </div>
+        </div>
+        <div className="text-white">
+          <h3 className="text-white text-xl">Usefull links</h3>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Terms of Services
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Privacy Policy
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Cookie Policy
+            </a>
+          </div>
+          <div className="my-4">
+            <a href="#" className="text-white text-base font-normal opacity-70">
+              Contact us
+            </a>
+          </div>
+        </div>
+        <div className="text-white">
+          <h3 className="text-white text-xl">Newsletter</h3>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          <p className="text-white text-base font-normal opacity-70 mt-4">
+            Sign up and receive the lastest news via email.
           </p>
-        </a>
+          <div className=" mt-6">
+            <input
+              type="email"
+              className="h-14 w-[260px] py-3 px-3 text-black outline-none bg-[#057017] border border-white rounded"
+              placeholder="Email address"
+            />
+            <button className="px-4 bg-[#009C1A] w-[260px] md:w-fit  md:rounded-e-lg h-14">
+              Send
+            </button>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;
